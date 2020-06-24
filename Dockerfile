@@ -17,8 +17,6 @@ RUN apt-get update && \
     php-pear \
     php-gd \
     && \
-    apt-get install nc \
-    apt install nmap \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
