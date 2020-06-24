@@ -25,7 +25,7 @@ COPY dvwa /var/www/html
 
 COPY config.inc.php /var/www/html/config/
 
-RUN chown www-data:www-data -R /var/www/html && \
+RUN chown root:root -R /var/www/html && \
     rm /var/www/html/index.html
 
 RUN service mysql start && \
