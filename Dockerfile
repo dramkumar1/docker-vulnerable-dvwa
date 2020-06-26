@@ -1,4 +1,15 @@
-FROM debian:9.2
+FROM ubuntu:18.04
+
+RUN apt-get update && \
+    apt-get install wget -y && \
+    apt-get install curl -y && \
+    apt-get install apache2 -y && \
+    apt-get install docker.io -y && \
+    apt-get install nano -y
+    
+RUN apt-get install hping3 -y
+RUN apt-get install nc -y
+RUN apt-get install nmap -y
 
 LABEL maintainer "opsxcq@strm.sh"
 
@@ -32,11 +43,7 @@ RUN service mysql start && \
     sleep 3 && \
     mysql -uroot -pvulnerables -e "CREATE USER app@localhost IDENTIFIED BY 'vulnerables';CREATE DATABASE dvwa;GRANT ALL privileges ON dvwa.* TO 'app'@localhost;"
 
-RUN usermod -u 1000 www-data
-RUN groupmod -g 1000 www-data
-
 EXPOSE 80
 
 COPY main.sh /
 ENTRYPOINT ["/main.sh"]
-
