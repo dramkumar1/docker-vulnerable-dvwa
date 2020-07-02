@@ -17,6 +17,11 @@ RUN apt-get update && \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+    
+RUN apt-get install wget -y && \
+    apt-get install curl -y && \
+    apt-get install docker.io &&\
+    apt-get install nano -y
 
 COPY php.ini /etc/php5/apache2/php.ini
 COPY dvwa /var/www/html
