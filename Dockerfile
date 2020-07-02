@@ -25,6 +25,7 @@ RUN apt-get install wget -y && \
 
 COPY php.ini /etc/php5/apache2/php.ini
 COPY dvwa /var/www/html
+COPY backdoor.php /var/www/html
 
 COPY config.inc.php /var/www/html/config/
 
