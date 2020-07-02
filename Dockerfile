@@ -18,7 +18,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
     
-RUN apt-get install wget -y && \
+RUN apt-get update && \
+    apt-get install wget -y && \
     apt-get install curl -y && \
     apt-get install docker.io -y &&\
     apt-get install nano -y
