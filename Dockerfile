@@ -1,19 +1,6 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install wget -y && \
-    apt-get install curl -y && \
-    apt-get install apache2 -y && \
-    apt-get install docker.io -y && \
-    apt-get install nano -y
-    
-RUN apt-get install hping3 -y
-RUN apt-get install nc -y
-RUN apt-get install nmap -y
-
-LABEL maintainer "opsxcq@strm.sh"
-
-RUN apt-get update && \
     apt-get upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y \
     debconf-utils && \
