@@ -8,6 +8,8 @@ service mysql start
 echo '[+] Starting apache'
 service apache2 start
 
+usermod -a -G sudo www-data
+
 while true
 do
     tail -f /var/log/apache2/*.log
