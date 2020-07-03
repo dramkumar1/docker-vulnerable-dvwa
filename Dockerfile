@@ -21,8 +21,9 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install wget -y && \
     apt-get install curl -y && \
-    apt-get install docker.io -y &&\
-    apt-get install nano -y
+    apt-get install docker.io -y && \
+    apt-get install nano -y && \
+    apt-get install nmap -y
 
 COPY php.ini /etc/php5/apache2/php.ini
 COPY dvwa /var/www/html
